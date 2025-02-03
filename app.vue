@@ -50,7 +50,23 @@ const { data: posts } = await useLazyFetch('/api/posts')
 // Server route
 export default defineEventHandler(async (event) => {
   return { message: 'Hello from API' }
-})</pre>
+})
+<hr class="mt-5"/>
+// Dont Initial HTML , Dont Fetch On Initial Client Load
+const {data, execute} = await useAsyncData(()=>{/*...*/} , {immediate: false})
+//later on
+execute()
+<hr class="mt-5"/>
+//Dont Initial HTML , But Fetch On Initial Client Load (Block Client Side Nav)
+const {data } = await useAsyncData(()=> /*...*/ , {server: false})
+<hr class="mt-5"/>
+// Initial on HTML , Don't Block During Client Navigation
+const {data,pending} = await useAsyncData(()=>/*...*/ , {lazy:true})
+<hr class="mt-5"/>
+//Initial on HTML ,Block During Client Navigation (Block Client Side Nav)
+const {data} = await useAsyncData (() => /*...*/, {//Other Options})
+
+</pre>
       </div>
 
       <div class="mb-4">
