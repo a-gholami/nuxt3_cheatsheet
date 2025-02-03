@@ -102,6 +102,7 @@ const {data,pending} = await useAsyncData(()=>/*...*/ , {lazy:true})
 //Initial on HTML ,Block During Client Navigation (Block Client Side Nav)
 const {data} = await useAsyncData (() => /*...*/, {//Other Options})
 
+
 </script>
 ```
 
