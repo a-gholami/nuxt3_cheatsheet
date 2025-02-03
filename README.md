@@ -87,6 +87,21 @@ const { data: posts } = await useFetch('/api/posts', {
     title: post.title.toUpperCase()
   }))
 })
+---------------------------------------------------------
+// Dont Initial HTML , Dont Fetch On Initial Client Load
+const {data, execute} = await useAsyncData(()=>{/*...*/} , {immediate: false})
+//later on
+execute()
+---------------------------------------------------------
+//Dont Initial HTML , But Fetch On Initial Client Load (Block Client Side Nav)
+const {data } = await useAsyncData(()=> /*...*/ , {server: false})
+---------------------------------------------------------
+// Initial on HTML , Don't Block During Client Navigation
+const {data,pending} = await useAsyncData(()=>/*...*/ , {lazy:true})
+---------------------------------------------------------
+//Initial on HTML ,Block During Client Navigation (Block Client Side Nav)
+const {data} = await useAsyncData (() => /*...*/, {//Other Options})
+
 </script>
 ```
 
